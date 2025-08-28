@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delton Financial Website Clone</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        /* Custom styles to match the design */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #374151; /* gray-700 */
+        }
+        .hero-clip {
+            /* Creates the angled bottom edge for the hero section */
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            z-index: 10;
+            min-width: 200px;
+            border-radius: 0.5rem;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+        .nav-link:hover .dropdown {
+            display: block;
+        }
+        .dropdown a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: #374151;
+            white-space: nowrap;
+        }
+        .dropdown a:hover {
+            background-color: #f3f4f6; /* gray-100 */
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- Header Section -->
+    <header class="bg-white sticky top-0 z-50 shadow-md">
+        <!-- Top Bar -->
+        <div class="bg-gray-100 text-xs text-gray-600">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-1">
+                <div>
+                    <a href="#" class="hover:underline mr-4">Press</a>
+                    <a href="#" class="hover:underline">Search</a>
+                </div>
+                <div>
+                    <a href="#" class="hover:underline">En</a> | <a href="#" class="hover:underline">Fr-Ca</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation -->
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-48">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <img class="h-40 w-auto" src="logo.png" alt="Delton Financial Logo" onerror="this.onerror=null;this.src='https://placehold.co/640x160/cccccc/000000?text=Delton+Financial+Logo';">
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <div class="nav-link">
+                        <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">About <i class="fas fa-chevron-down text-xs ml-1"></i></a>
+                    </div>
+                    <div class="nav-link">
+                        <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Finance Fundamentals <i class="fas fa-chevron-down text-xs ml-1"></i></a>
+                    </div>
+                    <div class="nav-link">
+                        <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Client Solutions <i class="fas fa-chevron-down text-xs ml-1"></i></a>
+                         <div class="dropdown">
+                            <a href="#">Products & Services</a>
+                            <a href="#">Retirement Strategies</a>
+                            <a href="#">Education Planning</a>
+                            <a href="#">Business Strategies</a>
+                            <a href="#">Estate Preservation</a>
+                            <a href="#">Client Expectations</a>
+                            <a href="#">Client Testimonials</a>
+                        </div>
+                    </div>
+                    <div class="nav-link">
+                        <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Agent Opportunity <i class="fas fa-chevron-down text-xs ml-1"></i></a>
+                        <div class="dropdown">
+                            <a href="#">Business Model</a>
+                            <a href="#">Technology & Marketing</a>
+                            <a href="#">Training & Support</a>
+                            <a href="#">Agent Expectations</a>
+                            <a href="#">Agent Testimonials</a>
+                            <a href="#">Convention</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="hidden md:flex items-center space-x-2">
+                    <a href="#" class="bg-blue-600 text-white px-5 py-2 rounded-md text-sm font-semibold hover:bg-blue-700 transition duration-300">Join Now</a>
+                    <a href="#" class="border border-gray-300 text-gray-700 px-5 py-2 rounded-md text-sm font-semibold hover:bg-gray-100 transition duration-300">Locate an Agent</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+                        <i class="fas fa-bars fa-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white p-4 absolute w-full shadow-lg">
+            <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">About</a>
+            <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">Finance Fundamentals</a>
+            <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">Client Solutions</a>
+            <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">Agent Opportunity</a>
+            <div class="mt-4 pt-4 border-t border-gray-200">
+                 <a href="#" class="block w-full text-center bg-blue-600 text-white px-5 py-2 rounded-md text-sm font-semibold hover:bg-blue-700 transition duration-300 mb-2">Join Now</a>
+                 <a href="#" class="block w-full text-center border border-gray-300 text-gray-700 px-5 py-2 rounded-md text-sm font-semibold hover:bg-gray-100 transition duration-300">Locate an Agent</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative bg-cover bg-center text-white hero-clip mb-12 md:mb-20" style="background-image: url('p1.png'); height: 600px;">
+            <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex items-center h-full">
+                <div class="max-w-2xl">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">Forward with Financial Stability</h1>
+                    <p class="mt-4 text-lg md:text-xl">
+                        Whatever your life's goals, our financial professionals can help design a strategy tailored to your specific needs. Delton Financial is primed to help you prepare for the long term with life insurance, education planning, and retirement strategies.
+                    </p>
+                    <a href="#" class="mt-8 inline-block bg-blue-600 text-white px-8 py-3 rounded-md text-lg font-semibold hover:bg-blue-700 transition duration-300">
+                        Explore Delton Financial
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pursue Financial Security Section -->
+        <section class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-blue-900 mb-12">Pursue Financial Security</h2>
+                <div class="grid md:grid-cols-2 gap-8 lg:gap-16 text-gray-600 leading-relaxed max-w-5xl mx-auto">
+                    <p>
+                        For more than 20 years, Delton Financial, a Transamerica company, has helped millions of individuals and families find financial security through our life insurance, retirement and wealth-building strategies. And we can do the same for you.
+                    </p>
+                    <p>
+                        Our independent agents at Delton Financial Insurance Agency, LLC or its subsidiaries in the United States or Delton Financial Insurance Agency of Canada Inc. are excited to guide groups and individuals just like you. These professionals will educate you while helping to create a strategy that's customized for your specific needs. We can inform you about products and opportunities to help you develop a sound financial future.
+                    </p>
+                </div>
+                 <div class="text-center mt-12">
+                    <a href="#" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-md text-lg font-semibold hover:bg-blue-700 transition duration-300">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Mission Section -->
+        <section class="py-16 md:py-24 bg-blue-900 text-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid md:grid-cols-2 items-center gap-8 lg:gap-16">
+                    <div>
+                        <img src="image2.png" alt="Diverse group of people in a meeting" class="rounded-lg shadow-2xl" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/000000?text=Image+2';">
+                    </div>
+                    <div class="max-w-lg">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-6">Our Mission</h2>
+                        <p class="mb-6 leading-relaxed">
+                            Our mission is to build and protect wealth for families. We want to help people move from dreaming to doing. We do this by helping them understand financial fundamentals and then providing them with the support, products, and services to help them reach their goals.
+                        </p>
+                        <a href="#" class="inline-block border-2 border-white text-white px-8 py-3 rounded-md text-lg font-semibold hover:bg-white hover:text-blue-900 transition duration-300">
+                            About Delton Financial
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Financial Professionals Section -->
+        <section class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Financial Professionals Dedicated to Your Success</h2>
+                <p class="max-w-3xl mx-auto text-gray-600 mb-16">We are committed to helping our clients and agents with the tools and strategies to help them succeed.</p>
+                <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
+                    <div class="p-6">
+                        <i class="fas fa-users text-4xl text-blue-600 mb-4"></i>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">For Our Clients</h3>
+                        <p class="text-gray-600">We provide a financial needs analysis to help you create a customized strategy to reach your financial goals.</p>
+                    </div>
+                    <div class="p-6">
+                        <i class="fas fa-chart-line text-4xl text-blue-600 mb-4"></i>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">For Our Agents</h3>
+                        <p class="text-gray-600">We offer a business platform with mentoring, training, and access to a wide range of products and providers.</p>
+                    </div>
+                    <div class="p-6">
+                        <i class="fas fa-handshake text-4xl text-blue-600 mb-4"></i>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">For Our Associates</h3>
+                        <p class="text-gray-600">We offer support to help you build your business, and the opportunity to help others build theirs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Start Your Own Business Section -->
+        <section class="py-16 md:py-24 bg-gray-50">
+             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid md:grid-cols-2 items-center gap-8 lg:gap-16">
+                    <div>
+                        <img src="image3.png" alt="Woman working on a laptop" class="rounded-lg shadow-2xl" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/000000?text=Image+3';">
+                    </div>
+                    <div class="max-w-lg">
+                        <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-6">Start Your Own Business</h2>
+                        <p class="mb-6 leading-relaxed text-gray-600">
+                           At Delton Financial, we're committed to helping you start and grow your own business. We offer a unique business platform that provides you with the tools, technology, and training you need to succeed. With Delton Financial, you can be in business for yourself, but not by yourself.
+                        </p>
+                        <a href="#" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-md text-lg font-semibold hover:bg-blue-700 transition duration-300">
+                            Join Delton Financial
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-gray-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+                <!-- Column 1 -->
+                <div class="col-span-2 lg:col-span-1">
+                     <img class="h-40 w-auto mb-4" src="logo.png" alt="Delton Financial Logo" onerror="this.onerror=null;this.src='https://placehold.co/640x160/cccccc/ffffff?text=Delton+Financial+Logo';">
+                     <p class="text-sm">Helping people move from dreaming to doing.</p>
+                </div>
+                <!-- Column 2 -->
+                <div>
+                    <h4 class="font-semibold text-white mb-4">About</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:underline">Our Story</a></li>
+                        <li><a href="#" class="hover:underline">Leadership</a></li>
+                        <li><a href="#" class="hover:underline">Careers</a></li>
+                        <li><a href="#" class="hover:underline">Press</a></li>
+                    </ul>
+                </div>
+                <!-- Column 3 -->
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Solutions</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:underline">For Individuals</a></li>
+                        <li><a href="#" class="hover:underline">For Businesses</a></li>
+                        <li><a href="#" class="hover:underline">Retirement</a></li>
+                        <li><a href="#" class="hover:underline">Education</a></li>
+                    </ul>
+                </div>
+                <!-- Column 4 -->
+                 <div>
+                    <h4 class="font-semibold text-white mb-4">Opportunity</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:underline">Why Delton Financial</a></li>
+                        <li><a href="#" class="hover:underline">Business Model</a></li>
+                        <li><a href="#" class="hover:underline">Join Now</a></li>
+                    </ul>
+                </div>
+                <!-- Column 5 -->
+                 <div>
+                    <h4 class="font-semibold text-white mb-4">Connect</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:underline">Contact Us</a></li>
+                        <li><a href="#" class="hover:underline">Find an Agent</a></li>
+                        <li><a href="#" class="hover:underline">Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center">
+                <div class="text-sm text-center md:text-left">
+                    <p>&copy; 2024 Delton Financial. All Rights Reserved.</p>
+                    <div class="mt-2 space-x-4">
+                        <a href="#" class="hover:underline">Privacy Policy</a>
+                        <a href="#" class="hover:underline">Terms of Use</a>
+                        <a href="#" class="hover:underline">Accessibility</a>
+                    </div>
+                </div>
+                <div class="flex space-x-4 mt-6 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter fa-lg"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-youtube fa-lg"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+</body>
+</html>
