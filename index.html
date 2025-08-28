@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +12,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script>
+        // Configure Tailwind CSS to use the 'class' strategy for dark mode
+        tailwind.config = {
+          darkMode: 'class',
+        }
+    </script>
     <style>
         /* Custom styles to match the design */
         body {
@@ -38,6 +44,10 @@
             padding-top: 0.5rem;
             padding-bottom: 0.5rem;
         }
+        .dark .dropdown {
+            background-color: #1f2937; /* gray-800 */
+            border: 1px solid #4b5563; /* gray-600 */
+        }
         .nav-link:hover .dropdown {
             display: block;
         }
@@ -47,17 +57,23 @@
             color: #374151;
             white-space: nowrap;
         }
+        .dark .dropdown a {
+            color: #d1d5db; /* gray-300 */
+        }
         .dropdown a:hover {
             background-color: #f3f4f6; /* gray-100 */
         }
+        .dark .dropdown a:hover {
+            background-color: #374151; /* gray-700 */
+        }
     </style>
 </head>
-<body class="bg-white">
+<body class="bg-white dark:bg-gray-900 transition-colors duration-300">
 
     <!-- Header Section -->
-    <header class="bg-white sticky top-0 z-50 shadow-md">
+    <header class="bg-white dark:bg-gray-800 sticky top-0 z-50 shadow-md">
         <!-- Top Bar -->
-        <div class="bg-gray-100 text-xs text-gray-600">
+        <div class="bg-gray-100 dark:bg-gray-700 text-xs text-gray-600 dark:text-gray-400">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-1">
                 <div>
                     <a href="#" class="hover:underline mr-4">Press</a>
@@ -74,19 +90,19 @@
             <div class="flex items-center justify-between h-48">
                 <!-- Logo -->
                 <div class="flex-shrink-0">
-                    <img class="h-40 w-auto" src="logo.png" alt="Delton Financial Logo" onerror="this.onerror=null;this.src='https://placehold.co/640x160/cccccc/000000?text=Delton+Financial+Logo';">
+                    <img class="h-40 w-auto" src="logo.png" alt="Delton Financial Logo" onerror="this.onerror=null;this.src='https://placehold.co/640x160/cccccc/000000?text=Delton+Financial';">
                 </div>
 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center space-x-8">
                     <div class="nav-link">
-                        <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">About <i class="fas fa-chevron-down text-xs ml-1"></i></a>
+                        <a href="#" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium">About <i class="fas fa-chevron-down text-xs ml-1"></i></a>
                     </div>
                     <div class="nav-link">
-                        <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Finance Fundamentals <i class="fas fa-chevron-down text-xs ml-1"></i></a>
+                        <a href="#" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium">Finance Fundamentals <i class="fas fa-chevron-down text-xs ml-1"></i></a>
                     </div>
                     <div class="nav-link">
-                        <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Client Solutions <i class="fas fa-chevron-down text-xs ml-1"></i></a>
+                        <a href="#" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium">Client Solutions <i class="fas fa-chevron-down text-xs ml-1"></i></a>
                          <div class="dropdown">
                             <a href="#">Products & Services</a>
                             <a href="#">Retirement Strategies</a>
@@ -98,7 +114,7 @@
                         </div>
                     </div>
                     <div class="nav-link">
-                        <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Agent Opportunity <i class="fas fa-chevron-down text-xs ml-1"></i></a>
+                        <a href="#" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium">Agent Opportunity <i class="fas fa-chevron-down text-xs ml-1"></i></a>
                         <div class="dropdown">
                             <a href="#">Business Model</a>
                             <a href="#">Technology & Marketing</a>
@@ -113,12 +129,17 @@
                 <!-- Action Buttons -->
                 <div class="hidden md:flex items-center space-x-2">
                     <a href="#" class="bg-blue-600 text-white px-5 py-2 rounded-md text-sm font-semibold hover:bg-blue-700 transition duration-300">Join Now</a>
-                    <a href="#" class="border border-gray-300 text-gray-700 px-5 py-2 rounded-md text-sm font-semibold hover:bg-gray-100 transition duration-300">Locate an Agent</a>
+                    <a href="#" class="border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 px-5 py-2 rounded-md text-sm font-semibold hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-300">Locate an Agent</a>
+                    <!-- Theme Toggle Button -->
+                    <button id="theme-toggle" class="ml-2 w-10 h-10 border border-gray-300 dark:border-gray-600 rounded-md flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                        <i id="theme-toggle-sun" class="fas fa-sun hidden"></i>
+                        <i id="theme-toggle-moon" class="fas fa-moon"></i>
+                    </button>
                 </div>
                 
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+                    <button id="mobile-menu-button" class="text-gray-700 dark:text-gray-300 focus:outline-none">
                         <i class="fas fa-bars fa-lg"></i>
                     </button>
                 </div>
@@ -126,23 +147,38 @@
         </nav>
         
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden hidden bg-white p-4 absolute w-full shadow-lg">
-            <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">About</a>
-            <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">Finance Fundamentals</a>
-            <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">Client Solutions</a>
-            <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">Agent Opportunity</a>
-            <div class="mt-4 pt-4 border-t border-gray-200">
+        <div id="mobile-menu" class="md:hidden hidden bg-white dark:bg-gray-800 p-4 absolute w-full shadow-lg">
+            <a href="#" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">About</a>
+            <a href="#" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Finance Fundamentals</a>
+            <a href="#" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Client Solutions</a>
+            <a href="#" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Agent Opportunity</a>
+            <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
                  <a href="#" class="block w-full text-center bg-blue-600 text-white px-5 py-2 rounded-md text-sm font-semibold hover:bg-blue-700 transition duration-300 mb-2">Join Now</a>
-                 <a href="#" class="block w-full text-center border border-gray-300 text-gray-700 px-5 py-2 rounded-md text-sm font-semibold hover:bg-gray-100 transition duration-300">Locate an Agent</a>
+                 <a href="#" class="block w-full text-center border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 px-5 py-2 rounded-md text-sm font-semibold hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-300">Locate an Agent</a>
             </div>
         </div>
     </header>
 
     <main>
-        <!-- Hero Section -->
-        <section class="relative bg-cover bg-center text-white hero-clip mb-12 md:mb-20" style="background-image: url('p1.png'); height: 600px;">
-            <div class="absolute inset-0 bg-black bg-opacity-40"></div>
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex items-center h-full">
+        <!-- Hero Section with Video Background -->
+        <section class="relative text-white hero-clip mb-12 md:mb-20 overflow-hidden" style="height: 600px;">
+            <!-- Background Videos -->
+            <video id="day-video" autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover z-0">
+                <!-- Day mode video. -->
+                <source src="day.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <video id="night-video" autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover z-0 hidden">
+                <!-- Night mode video. -->
+                <source src="night.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+            <!-- Overlay for text readability -->
+            <div class="absolute inset-0 bg-black bg-opacity-60 z-10"></div>
+
+            <!-- Content -->
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 flex items-center h-full">
                 <div class="max-w-2xl">
                     <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">Forward with Financial Stability</h1>
                     <p class="mt-4 text-lg md:text-xl">
@@ -156,10 +192,10 @@
         </section>
 
         <!-- Pursue Financial Security Section -->
-        <section class="py-16 md:py-24 bg-white">
+        <section class="py-16 md:py-24 bg-white dark:bg-gray-900">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl md:text-4xl font-bold text-center text-blue-900 mb-12">Pursue Financial Security</h2>
-                <div class="grid md:grid-cols-2 gap-8 lg:gap-16 text-gray-600 leading-relaxed max-w-5xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-blue-900 dark:text-blue-300 mb-12">Pursue Financial Security</h2>
+                <div class="grid md:grid-cols-2 gap-8 lg:gap-16 text-gray-600 dark:text-gray-400 leading-relaxed max-w-5xl mx-auto">
                     <p>
                         For more than 20 years, Delton Financial, a Transamerica company, has helped millions of individuals and families find financial security through our life insurance, retirement and wealth-building strategies. And we can do the same for you.
                     </p>
@@ -196,40 +232,40 @@
         </section>
 
         <!-- Financial Professionals Section -->
-        <section class="py-16 md:py-24 bg-white">
+        <section class="py-16 md:py-24 bg-white dark:bg-gray-900">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Financial Professionals Dedicated to Your Success</h2>
-                <p class="max-w-3xl mx-auto text-gray-600 mb-16">We are committed to helping our clients and agents with the tools and strategies to help them succeed.</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 dark:text-blue-300 mb-4">Financial Professionals Dedicated to Your Success</h2>
+                <p class="max-w-3xl mx-auto text-gray-600 dark:text-gray-400 mb-16">We are committed to helping our clients and agents with the tools and strategies to help them succeed.</p>
                 <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
                     <div class="p-6">
-                        <i class="fas fa-users text-4xl text-blue-600 mb-4"></i>
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">For Our Clients</h3>
-                        <p class="text-gray-600">We provide a financial needs analysis to help you create a customized strategy to reach your financial goals.</p>
+                        <i class="fas fa-users text-4xl text-blue-600 dark:text-blue-400 mb-4"></i>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-gray-200 mb-2">For Our Clients</h3>
+                        <p class="text-gray-600 dark:text-gray-400">We provide a financial needs analysis to help you create a customized strategy to reach your financial goals.</p>
                     </div>
                     <div class="p-6">
-                        <i class="fas fa-chart-line text-4xl text-blue-600 mb-4"></i>
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">For Our Agents</h3>
-                        <p class="text-gray-600">We offer a business platform with mentoring, training, and access to a wide range of products and providers.</p>
+                        <i class="fas fa-chart-line text-4xl text-blue-600 dark:text-blue-400 mb-4"></i>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-gray-200 mb-2">For Our Agents</h3>
+                        <p class="text-gray-600 dark:text-gray-400">We offer a business platform with mentoring, training, and access to a wide of products and providers.</p>
                     </div>
                     <div class="p-6">
-                        <i class="fas fa-handshake text-4xl text-blue-600 mb-4"></i>
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">For Our Associates</h3>
-                        <p class="text-gray-600">We offer support to help you build your business, and the opportunity to help others build theirs.</p>
+                        <i class="fas fa-handshake text-4xl text-blue-600 dark:text-blue-400 mb-4"></i>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-gray-200 mb-2">For Our Associates</h3>
+                        <p class="text-gray-600 dark:text-gray-400">We offer support to help you build your business, and the opportunity to help others build theirs.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Start Your Own Business Section -->
-        <section class="py-16 md:py-24 bg-gray-50">
+        <section class="py-16 md:py-24 bg-gray-50 dark:bg-gray-800">
              <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid md:grid-cols-2 items-center gap-8 lg:gap-16">
                     <div>
                         <img src="image3.png" alt="Woman working on a laptop" class="rounded-lg shadow-2xl" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/000000?text=Image+3';">
                     </div>
                     <div class="max-w-lg">
-                        <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-6">Start Your Own Business</h2>
-                        <p class="mb-6 leading-relaxed text-gray-600">
+                        <h2 class="text-3xl md:text-4xl font-bold text-blue-900 dark:text-blue-300 mb-6">Start Your Own Business</h2>
+                        <p class="mb-6 leading-relaxed text-gray-600 dark:text-gray-400">
                            At Delton Financial, we're committed to helping you start and grow your own business. We offer a unique business platform that provides you with the tools, technology, and training you need to succeed. With Delton Financial, you can be in business for yourself, but not by yourself.
                         </p>
                         <a href="#" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-md text-lg font-semibold hover:bg-blue-700 transition duration-300">
@@ -242,12 +278,12 @@
     </main>
 
     <!-- Footer Section -->
-    <footer class="bg-gray-800 text-gray-300">
+    <footer class="bg-gray-800 dark:bg-black text-gray-300">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
                 <!-- Column 1 -->
                 <div class="col-span-2 lg:col-span-1">
-                     <img class="h-40 w-auto mb-4" src="logo.png" alt="Delton Financial Logo" onerror="this.onerror=null;this.src='https://placehold.co/640x160/cccccc/ffffff?text=Delton+Financial+Logo';">
+                     <img class="h-40 w-auto mb-4" src="logo.png" alt="Delton Financial Logo" onerror="this.onerror=null;this.src='https://placehold.co/640x160/cccccc/ffffff?text=Delton+Financial';">
                      <p class="text-sm">Helping people move from dreaming to doing.</p>
                 </div>
                 <!-- Column 2 -->
@@ -309,12 +345,53 @@
     </footer>
 
     <script>
-        // JavaScript for mobile menu toggle
+        // Mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
 
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
+        });
+
+        // Theme toggle logic
+        const themeToggleButton = document.getElementById('theme-toggle');
+        const sunIcon = document.getElementById('theme-toggle-sun');
+        const moonIcon = document.getElementById('theme-toggle-moon');
+        const htmlEl = document.documentElement;
+        const dayVideo = document.getElementById('day-video');
+        const nightVideo = document.getElementById('night-video');
+
+        // Function to apply the theme
+        const applyTheme = (theme) => {
+            if (theme === 'dark') {
+                htmlEl.classList.add('dark');
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+                dayVideo.classList.add('hidden');
+                nightVideo.classList.remove('hidden');
+            } else {
+                htmlEl.classList.remove('dark');
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+                dayVideo.classList.remove('hidden');
+                nightVideo.classList.add('hidden');
+            }
+        };
+
+        // Check for saved theme in localStorage and apply it on load
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        applyTheme(savedTheme);
+
+        // Event listener for the toggle button
+        themeToggleButton.addEventListener('click', () => {
+            const isDarkMode = htmlEl.classList.contains('dark');
+            if (isDarkMode) {
+                applyTheme('light');
+                localStorage.setItem('theme', 'light');
+            } else {
+                applyTheme('dark');
+                localStorage.setItem('theme', 'dark');
+            }
         });
     </script>
 
